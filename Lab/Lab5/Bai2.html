@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lab 3 - Bài 1 - JS nâng cao</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+            integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+            crossorigin="anonymous"
+        />
+    </head>
+    <body></body>
+    <script>
+        let promise = new Promise(function ThucDay(resolve, reject) {
+            console.log("B1. Đã ngủ dậy");
+            return resolve();
+        });
+
+        promise
+            .then(function DanhRang() {
+                return new Promise(function (resolve, reject) {
+                    console.log("B2. Đang đánh răng");
+                    setTimeout(function () {
+                        console.log("Đã đánh răng xong!");
+                        return resolve();
+                    }, 2000);
+                });
+            })
+            .then(function ThayQuanAo() {
+                return new Promise(function (resolve, reject) {
+                    console.log("B3. Đang thay quần áo");
+                    setTimeout(function () {
+                        console.log("Đã thay quần áo xong");
+                        return resolve();
+                    }, 3000);
+                });
+            })
+            .then(function DiHoc() {
+                return new Promise(function (resolve, reject) {
+                    console.log("B4. Đang đến trường...");
+                    setTimeout(function () {
+                        console.log("Đã đến trường!");
+                    }, 4000);
+                });
+            });
+    </script>
+</html>

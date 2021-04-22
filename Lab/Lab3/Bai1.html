@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3 - Bài 1 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body></body>
+  <script>
+    let student = {
+      id: 1,
+      fullname: "Nguyen Van A",
+      email: "anv@gmail.com",
+      avatar: "https://image.flaticon.com/icons/png/512/147/147144.png",
+      address: "HCMC",
+      study_major: "IT",
+      avgScore: 9,
+      getAvgScore() {
+        return this.avgScore;
+      },
+      setAvgScore(point) {
+        this.avgScore = point;
+      },
+      changeAddress(address) {
+        this.address = address;
+      },
+    };
+
+    student.setAvgScore(6);
+    student.changeAddress("Quận 12");
+
+    console.log(student);
+
+    console.log(student.getAvgScore());
+  </script>
+</html>

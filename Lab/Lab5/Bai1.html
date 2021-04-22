@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lab 3 - Bài 1 - JS nâng cao</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+            integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+            crossorigin="anonymous"
+        />
+    </head>
+    <body></body>
+    <script>
+        let BuoiSang = {
+            ThucDay: function () {
+                console.log("B1. Đã ngủ dậy");
+                this.DanhRang();
+            },
+            DanhRang: function () {
+                console.log("B2. Đang đánh răng");
+                setTimeout(function () {
+                    console.log("Đã đánh răng xong!");
+                    BuoiSang.ThayQuanAo();
+                }, 2000);
+            },
+            ThayQuanAo: function () {
+                console.log("B3. Đang thay quần áo");
+                setTimeout(function () {
+                    console.log("Đã thay quần áo xong");
+                    BuoiSang.DiHoc();
+                }, 3000);
+            },
+            DiHoc: function () {
+                console.log("B4. Đang đến trường...");
+                setTimeout(function () {
+                    console.log("Đã đến trường!");
+                }, 4000);
+            },
+        };
+
+        BuoiSang.ThucDay();
+
+        function ThucDay() {
+            console.log("B1. Đã ngủ dậy");
+            DanhRang();
+        }
+        function DanhRang() {
+            console.log("B2. Đang đánh răng");
+            setTimeout(function () {
+                console.log("Đã đánh răng xong!");
+                ThayQuanAo();
+            }, 2000);
+        }
+        function ThayQuanAo() {
+            console.log("B3. Đang thay quần áo");
+            setTimeout(function () {
+                console.log("Đã thay quần áo xong");
+                DiHoc();
+            }, 3000);
+        }
+        function DiHoc() {
+            console.log("B4. Đang đến trường...");
+            setTimeout(function () {
+                console.log("Đã đến trường!");
+            }, 4000);
+        }
+
+        ThucDay();
+    </script>
+</html>

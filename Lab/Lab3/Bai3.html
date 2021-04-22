@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3 - Bài 3 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body></body>
+  <script>
+    function Student(
+      name,
+      age,
+      address,
+      phone,
+      birthday,
+      subjectName,
+      subjectTeacher,
+      subjectPoint,
+      subjectYear
+    ) {
+      this.name = name;
+      this.age = age;
+      this.address = address;
+      this.phone = phone;
+      this.birthday = birthday;
+      this.subject = {
+        name: subjectName,
+        teacher: subjectTeacher,
+        point: subjectPoint,
+        year: subjectYear,
+      };
+    }
+
+    function StudentPoly(
+      name,
+      age,
+      address,
+      phone,
+      birthday,
+      subjectName,
+      subjectTeacher,
+      subjectPoint,
+      subjectYear
+    ) {
+      Student.call(
+        this,
+        name,
+        age,
+        address,
+        phone,
+        birthday,
+        subjectName,
+        subjectTeacher,
+        subjectPoint,
+        subjectYear
+      );
+
+      this.getSubjectPoint = function () {
+        return this.subject.subjectPoint;
+      };
+
+      this.setSubjectPoint = function (point) {
+        this.subject.subjectPoint = point;
+      };
+
+      this.setAddress = function (address) {
+        this.address = address;
+      };
+    }
+
+    let student1 = new Student(
+      "Nguyen Van A",
+      20,
+      "Quan 12",
+      "0929772829",
+      "20/07/2001",
+      "Javascript",
+      "Adam",
+      "9",
+      "2021"
+    );
+
+    let student2 = new StudentPoly(
+      "Nguyen Van B",
+      19,
+      "Quan 5",
+      "0367676767",
+      "04/09/2002",
+      "PHP",
+      "Jonh",
+      "5",
+      "2020"
+    );
+
+    student2.setSubjectPoint(6);
+    student2.setAddress("Quan 10");
+
+    console.log(student1);
+    console.log(student2);
+  </script>
+</html>

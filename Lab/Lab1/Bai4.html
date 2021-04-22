@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 1 - Bài 4 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+    <style></style>
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen bg-blue-500">
+      <div class="container mx-auto">
+        <div
+          class="bg-white rounded-lg shadow-lg p-5 font-bold text-blue-500 font-mono"
+        >
+          <div class="my-2">
+            <label for="">ID:</label>
+            <input
+              name="id"
+              type="text"
+              class="px-4 py-2 rounded-lg bg-transparent border-2 border-blue-300 w-full"
+              placeholder="ID..."
+            />
+          </div>
+          <div class="my-2">
+            <label for="">Name:</label>
+            <input
+              name="name"
+              type="text"
+              class="px-4 py-2 rounded-lg bg-transparent border-2 border-blue-300 w-full"
+              placeholder="Name..."
+            />
+          </div>
+          <div class="my-2">
+            <label for="">Gender:</label>
+            <select
+              name="gender"
+              id=""
+              class="px-4 py-2 rounded-lg bg-transparent border-2 border-blue-300 w-full"
+            >
+              <option disabled selected>Gender...</option>
+              <option value="0">Female</option>
+              <option value="1">Male</option>
+            </select>
+          </div>
+
+          <div class="my-2">
+            <button
+              id="submit"
+              class="px-4 py-2 bg-blue-500 text-white rounded-lg w-full hover:bg-blue-700 transition duration-300"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow-lg p-5 font-bold text-blue-500 font-mono mt-5"
+        >
+          <h4 class="font-mono font-bold text-2xl">List users</h4>
+          <table
+            class="table-fixed w-full border-2 border-blue-500 mt-4"
+            id="list-output"
+          >
+            <thead>
+              <tr>
+                <th class="w-1/4 border-2 border-blue-500">ID</th>
+                <th class="w-1/2 border-2 border-blue-500">Name</th>
+                <th class="w-1/4 border-2 border-blue-500">Gender</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let users = [
+      { id: 1, name: "James Smith", gender: 1 },
+      { id: 2, name: "Isla Brown", gender: 0 },
+      { id: 3, name: "Amelia Davies", gender: 0 },
+      { id: 4, name: "Jacob Evans", gender: 1 },
+    ];
+    let listOutput = document.querySelector("#list-output > tbody");
+    let addButton = document.getElementById("submit");
+    let inputID = document.querySelector('[name="id"]');
+    let inputName = document.querySelector('[name="name"]');
+    let inputGender = document.querySelector('[name="gender"]');
+    addButton.onclick = () => {
+      users.push({
+        id: +inputID.value,
+        name: inputName.value,
+        gender: +inputGender.value,
+      });
+      // console.log(users);
+      reloadList();
+    };
+
+    function reloadList() {
+      listOutput.innerHTML = "";
+      users.map(
+        (x) =>
+          (listOutput.innerHTML += `<tr>
+                <td class="border-2 border-blue-500 text-center">${x.id}</td>
+                <td class="border-2 border-blue-500 text-center">${x.name}</td>
+                <td class="border-2 border-blue-500 text-center">${
+                  x.gender == 0 ? "Female" : "Male"
+                }</td>
+              </tr>`)
+      );
+    }
+
+    reloadList();
+  </script>
+</html>

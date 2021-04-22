@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css"
+            integrity="sha512-paVHVRRhdoOu1nOXKnqDC1Vka0nh7FAmU3nsM4n2FKxOQTeF6crMdMfkVvEsuaOXZ6oEAVL5+wLbQcule/Xdag=="
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <span>
+            Line 0 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+        <br />
+        <span>
+            Line 0 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+        <br />
+        <p id="line1">
+            Line 2 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <p class="line2">
+            Line 3 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <p line-count="line3">
+            Line 4 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <p selectedLine>
+            Line 5 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <ul>
+            <li>li 1</li>
+            <li>li 2</li>
+            <li>li 3</li>
+            <li>li 4</li>
+            <li>li 5</li>
+        </ul>
+    </body>
+    <script>
+        $("li:first").css("background", "red");
+        $("#line1 +").css("color", "blue");
+        $("p[selectedLine] +").prev().css("background", "yellow");
+        $("li").css("color", "orange");
+    </script>
+</html>

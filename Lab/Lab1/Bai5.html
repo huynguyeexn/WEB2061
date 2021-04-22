@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 1 - Bài 5 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+    <style></style>
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen bg-blue-500">
+      <div class="container mx-auto">
+        <div
+          class="bg-white rounded-lg shadow-lg p-5 font-bold text-blue-500 font-mono"
+        >
+          <div class="my-2">
+            <label for="">Date:</label>
+            <input
+              name="date"
+              type="number"
+              class="px-4 py-2 rounded-lg bg-transparent border-2 border-blue-300 w-full"
+              placeholder="Date..."
+            />
+          </div>
+          <div class="my-2">
+            <label for="">Month:</label>
+            <input
+              name="month"
+              type="number"
+              class="px-4 py-2 rounded-lg bg-transparent border-2 border-blue-300 w-full"
+              placeholder="Month..."
+            />
+          </div>
+          <div class="my-2">
+            <label for="">Year:</label>
+            <input
+              name="year"
+              type="number"
+              class="px-4 py-2 rounded-lg bg-transparent border-2 border-blue-300 w-full"
+              placeholder="Year..."
+            />
+          </div>
+
+          <div class="my-2">
+            <button
+              id="submit"
+              class="px-4 py-2 bg-blue-500 text-white rounded-lg w-full hover:bg-blue-700 transition duration-300"
+            >
+              Convert
+            </button>
+          </div>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow-lg p-5 font-bold text-blue-500 font-mono mt-5"
+        >
+          <h4 class="font-mono font-bold text-2xl">Result:</h4>
+          <div id="output" class="mt-4 font-bold text-2xl text-blue-600"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    let convertButton = document.getElementById("submit");
+    let date = document.querySelector('[name="date"]');
+    let month = document.querySelector('[name="month"]');
+    let year = document.querySelector('[name="year"]');
+    let output = document.querySelector("#output");
+
+    convertButton.onclick = () => {
+      output.innerHTML += `<p class="mt-2">${moment(
+        `${year.value}-${month.value}-${date.value}`
+      ).format("YYYY-MM-DD")}</p>`;
+
+      output.innerHTML += `<p class="mt-2">${moment(
+        `${year.value}-${month.value}-${date.value}`
+      ).format("DD/MM/YYYY")}</p>`;
+
+      output.innerHTML += `<p class="mt-2">${moment(
+        `${year.value}-${month.value}-${date.value}`
+      ).format("DD.MM.YYYY")}</p>`;
+
+      output.innerHTML += `<p class="mt-2">${moment(
+        `${year.value}-${month.value}-${date.value}`
+      ).format("DD, MMM YYYY")}</p>`;
+
+      output.innerHTML += `<p class="mt-2">${moment(
+        `${year.value}-${month.value}-${date.value}`
+      ).format("DD, MMMM YYYY")}</p>`;
+    };
+  </script>
+</html>

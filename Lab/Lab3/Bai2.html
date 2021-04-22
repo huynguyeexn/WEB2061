@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3 - Bài 2 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen bg-gray-900">
+      <div class="container mx-auto text-white font-mono p-2">
+        <div class="bg-gray-800 rounded-lg p-4">
+          <div class="">
+            <label for="">Subject name: </label>
+            <input
+              id="input-name"
+              type="text"
+              class="bg-transparent border-2 border-gray-700 rounded-lg w-full my-2 px-4 py-2"
+              placeholder="Input your subject name..."
+            />
+          </div>
+          <div class="mt-2">
+            <label for="">Point: </label>
+            <input
+              id="input-point"
+              type="number"
+              class="bg-transparent border-2 border-gray-700 rounded-lg w-full my-2 px-4 py-2"
+              placeholder="Input your point..."
+            />
+          </div>
+          <div class="mt-2">
+            <button
+              id="submit"
+              class="bg-green-600 hover:bg-green-800 transition duration-300 px-4 py-2 rounded-lg w-full"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-4 mt-4">
+          <div class="">
+            <label for="">Name: </label>
+            <span id="output-name" class="text-green-400"></span>
+          </div>
+          <div class="">
+            <label for="">Age: </label>
+            <span id="output-age" class="text-green-400"></span>
+          </div>
+          <div class="">
+            <label for="">Address: </label>
+            <span id="output-address" class="text-green-400"></span>
+          </div>
+
+          <div class="">
+            <label for="">Subject: </label>
+            <ul id="output-subject" class="text-green-400 list-disc pl-8"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let student = {
+      name: "Nguyen Van A",
+      age: 20,
+      address: "Ha Noi",
+      subjects: [{ name: "Javascript", point: 8 }],
+    };
+
+    let submit = document.getElementById("submit");
+    let inputName = document.getElementById("input-name");
+    let inputPoint = document.getElementById("input-point");
+
+    let outputName = document.getElementById("output-name");
+    let outputAge = document.getElementById("output-age");
+    let outputAddress = document.getElementById("output-address");
+    let outputSubject = document.getElementById("output-subject");
+
+    submit.onclick = () => {
+      student.subjects.push({
+        name: inputName.value,
+        point: +inputPoint.value,
+      });
+      reload();
+    };
+
+    function reload() {
+      outputName.innerText = student.name;
+      outputAge.innerText = student.age;
+      outputAddress.innerText = student.address;
+      outputSubject.innerText = "";
+
+      student.subjects.map((x) => {
+        outputSubject.innerHTML += `<li>${x.name} - ${x.point}</li>`;
+      });
+    }
+    reload();
+  </script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        function Lab1() {
+            return new Promise((resolve, reject) => {
+                let mark = prompt(`Điểm Lab 1 môn ${subjects}:`);
+                let result = (mark / 10) * 10;
+                return resolve(parseInt(result));
+            });
+        }
+        function Lab2() {
+            return new Promise((resolve, reject) => {
+                mark = prompt(`Điểm Lab 2 môn ${subjects}:`);
+                result = (mark / 10) * 20;
+                return resolve(parseInt(result));
+            });
+        }
+        function Lab3() {
+            return new Promise((resolve, reject) => {
+                mark = prompt(`Điểm Lab 3 môn ${subjects}:`);
+                result = (mark / 10) * 30;
+                return resolve(parseInt(result));
+            });
+        }
+        function Final() {
+            return new Promise((resolve, reject) => {
+                mark = prompt(`Điểm FINAL môn ${subjects}:`);
+                result = (mark / 10) * 40;
+                return resolve(parseInt(result));
+            });
+        }
+        let XepHang = (mark) => {
+            switch (true) {
+                case mark < 5:
+                    alert(`Tổng điểm : ${mark} \nHọc lực: Yếu`);
+                    break;
+                case mark >= 5 && mark < 7:
+                    alert(`Tổng điểm : ${mark} \nHọc lực: Trung bình`);
+                    break;
+                case mark >= 7 && mark < 8.5:
+                    alert(`Tổng điểm : ${mark} \nHọc lực: Khá`);
+                    break;
+                case mark >= 8.5 && mark <= 10:
+                    alert(`Tổng điểm : ${mark} \nHọc lực: Giỏi`);
+                    break;
+                default:
+                    alert("Điểm lỗi, vui lòng nhập lại!");
+                    break;
+            }
+        };
+
+        let total = 0;
+        let name = prompt("Nhập họ tên Sinh viên: ");
+        let subjects = prompt("Nhập tên môn học");
+
+        Lab1()
+            .then((value) => {
+                total += value;
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        Lab2().then((value) => {
+                            total += value;
+                        });
+                        return resolve();
+                    }, 3000);
+                });
+            })
+            .then(() => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        Lab3().then((value) => {
+                            total += value;
+                        });
+                        return resolve();
+                    }, 6000);
+                });
+            })
+            .then(() => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        Final().then((value) => {
+                            total += value;
+                        });
+                        return resolve();
+                    }, 3000);
+                });
+            })
+            .then(() => {
+                XepHang(total / 10);
+            });
+    </script>
+</html>

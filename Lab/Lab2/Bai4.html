@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 2 - Bài 4 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen bg-gray-900">
+      <div class="container mx-auto text-white font-mono p-2">
+        <div class="bg-gray-800 rounded-lg p-4">
+          <div class="">
+            <label for="">Email: </label>
+            <input
+              id="input"
+              type="text"
+              value="huynguyeexn@gmail.com"
+              class="bg-transparent border-2 border-gray-700 rounded-lg w-full my-2 px-4 py-2"
+              placeholder="Input your Email..."
+            />
+          </div>
+          <div class="mt-2">
+            <button
+              id="submit"
+              class="bg-green-600 hover:bg-green-800 transition duration-300 px-4 py-2 rounded-lg w-full"
+            >
+              Check
+            </button>
+          </div>
+        </div>
+        <div id="output" class="mt-4 font-bold text-5xl text-center"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let submit = document.getElementById("submit");
+    let input = document.getElementById("input");
+    let output = document.getElementById("output");
+
+    submit.onclick = () => {
+      let result = input.value;
+
+      if (result.match(/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi)) {
+        output.innerText = "TRUE";
+      } else {
+        output.innerText = "FALSE";
+      }
+    };
+  </script>
+</html>

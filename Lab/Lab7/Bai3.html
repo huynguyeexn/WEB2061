@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css"
+            integrity="sha512-paVHVRRhdoOu1nOXKnqDC1Vka0nh7FAmU3nsM4n2FKxOQTeF6crMdMfkVvEsuaOXZ6oEAVL5+wLbQcule/Xdag=="
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <div
+            class="bg-white min-h-screen flex justify-center items-center font-mono"
+        >
+            <div
+                class="w-80 bg-gradient-to-r from-purple-200 to-blue-100 p-4 shadow-lg rounded-lg"
+            >
+                <div class="text-center font-bold text-xl">
+                    <p>Danh sách sinh viên</p>
+                </div>
+                <div class="mt-4">
+                    <input
+                        id="fullname"
+                        type="text"
+                        class="border-2 border-gray-400 bg-transparent rounded-lg w-full px-4 py-2"
+                    />
+                    <button
+                        id="addButton"
+                        class="rounded-lg bg-gradient-to-r from-green-300 to-blue-300 hover:from-green-400 hover:to-blue-400 px-4 py-2 mt-2 text-gray-800 w-full"
+                    >
+                        Thêm sinh viên
+                    </button>
+                    <p class="text-center mt-2 text-red-600" id="errMsg"></p>
+                </div>
+                <div class="mt-4">
+                    <ul id="target" class="list-disc pl-4"></ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        let target = $("#target");
+        $("#addButton").click(function () {
+            let fullname = $("#fullname").val();
+            let err = $("#errMsg");
+            let flag = false;
+
+            if (fullname.length < 1) {
+                err.text("Không để trống tên sinh viên");
+            } else if (fullname.length > 30) {
+                err.text("Tên sinh viên không được quá 30 ký tự");
+            } else {
+                err.text("");
+                flag = true;
+            }
+            target.after("<li>" + fullname + "</li>");
+            $("#fullname").val("");
+        });
+    </script>
+</html>

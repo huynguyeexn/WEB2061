@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 1 - Bài 1 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+    <style>
+      #target {
+        background-color: #33691e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen">
+      <div
+        id="target"
+        class="h-64 w-64 bg-blue-500 rounded-lg shadow-xl flex items-center justify-center text-2xl font-mono font-bold text-white"
+      >
+        #33691E
+      </div>
+    </div>
+  </body>
+  <script>
+    var target = document.querySelector("#target");
+    target.onmouseover = () => {
+      target.style.backgroundColor = "#BF360C";
+      target.innerText = "#BF360C";
+    };
+    target.onmouseout = () => {
+      target.style.backgroundColor = "#33691E";
+      target.innerText = "#33691E";
+    };
+  </script>
+</html>

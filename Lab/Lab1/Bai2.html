@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 1 - Bài 2 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+    <style></style>
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen bg-blue-500">
+      <div
+        id="target"
+        class="w-1/2 bg-blue-100 rounded-lg shadow-lg text-center p-10"
+      >
+        <input
+          id="text-input"
+          type="text"
+          class="rounded px-4 py-2 bg-transparent border-2 border-blue-300 focus:border-blue-500 text-blue-600 w-full"
+          placeholder="Nhập vào đây để thấy sự thay đổi..."
+          value=""
+        />
+        <h1
+          id="text-output"
+          class="text-2xl font-bold font-mono text-blue-500 mt-4"
+        ></h1>
+      </div>
+    </div>
+  </body>
+  <script>
+    let textInput = document.querySelector("#text-input");
+    let textOutput = document.querySelector("#text-output");
+
+    textInput.onkeyup = () => {
+      textOutput.innerText = textInput.value;
+    };
+
+    let target = document.querySelector("#target");
+    let h2El = document.createElement("h2");
+
+    h2El.innerText = "Hello Polytechnic";
+    h2El.setAttribute(
+      "class",
+      "text-3xl text-mono font-bold text-red-600 pt-4"
+    );
+    target.appendChild(h2El);
+  </script>
+</html>

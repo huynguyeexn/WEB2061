@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 1 - Bài 3 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+    <style></style>
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen bg-blue-500">
+      <div
+        class="bg-blue-100 rounded-lg shadow-lg p-10 font-bold text-blue-500 font-mono"
+      >
+        <ul id="target"></ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    let users = [
+      { id: 1, name: "James Smith", gender: 1 },
+      { id: 2, name: "Isla Brown", gender: 0 },
+      { id: 3, name: "Amelia Davies", gender: 0 },
+      { id: 4, name: "Jacob Evans", gender: 1 },
+    ];
+
+    let target = document.querySelector("#target");
+
+    console.log(
+      users.map(
+        (x) =>
+          `<li class="">${x.id} - ${x.name} - ${
+            x.gender == 0 ? "male" : "female"
+          }</li>`
+      )
+    );
+
+    users.map(
+      (x) =>
+        (target.innerHTML += `<li class="">${x.id} - ${x.name} - ${
+          x.gender == 1 ? "male" : "female"
+        }</li>`)
+    );
+  </script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3 - Bài 1 - JS nâng cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css"
+      integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="bg-blue-100 min-h-screen text-gray-500 font-mono">
+      <div class="container mx-auto p-4">
+        <div class="w-1/2 p-4 rounded-lg shadow-lg bg-white mx-auto">
+          <div class="my-2">
+            <label for="">Cân nặng (kg): </label>
+            <br />
+            <input
+              id="weight"
+              type="text"
+              class="border-2 border-gray-300 px-4 py-2 rounded-lg w-full"
+              placeholder="Cân nặng..."
+            />
+          </div>
+          <div class="my-2">
+            <label for="">Chiều cao (cm): </label>
+            <br />
+            <input
+              id="height"
+              type="text"
+              class="border-2 border-gray-300 px-4 py-2 rounded-lg w-full"
+              placeholder="Cân nặng..."
+            />
+          </div>
+          <button
+            id="submit"
+            class="my-2 w-full bg-blue-300 text-white px-4 py-2 rounded-lg hover:bg-blue-400"
+          >
+            Enter
+          </button>
+        </div>
+
+        <div class="w-1/2 p-4 rounded-lg shadow-lg bg-white mx-auto mt-4">
+          Chỉ số BMI của bạn là: <strong id="target"></strong>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let button = document.querySelector("#submit");
+
+    button.onclick = () => {
+      let h = document.querySelector("#height").value;
+      let w = document.querySelector("#weight").value;
+      let target = document.querySelector("#target");
+
+      h = h / 100; // cm to m
+
+      x = (w / (h * h)).toFixed(1);
+
+      switch (true) {
+        case x < 18.5:
+          target.innerHTML = x + " (Dưới chuẩn)";
+          break;
+        case x <= 24.9 && x >= 18.5:
+          target.innerHTML = x + " (Bình thường)";
+          break;
+        case x <= 29.9 && x >= 25:
+          target.innerHTML = x + " (Thừa cân)";
+          break;
+        case x <= 34.9 && x >= 30:
+          target.innerHTML = x + " (Béo phì cấp độ I)";
+          break;
+        case x <= 39.9 && x >= 35:
+          target.innerHTML = x + " (Béo phì cấp độ II)";
+          break;
+        case x > 40:
+          target.innerHTML = x + " (Béo phì cấp độ III)";
+          break;
+      }
+    };
+  </script>
+</html>

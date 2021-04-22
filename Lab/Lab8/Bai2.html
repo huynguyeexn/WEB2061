@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css"
+            integrity="sha512-paVHVRRhdoOu1nOXKnqDC1Vka0nh7FAmU3nsM4n2FKxOQTeF6crMdMfkVvEsuaOXZ6oEAVL5+wLbQcule/Xdag=="
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <div
+            class="bg-white min-h-screen flex justify-center items-center font-mono p-4"
+        >
+            <div
+                class="bg-gradient-to-r from-purple-200 to-blue-100 p-4 shadow-lg rounded-lg"
+            >
+                <table
+                    id="table"
+                    class="table-auto border-collapse border border-green-800"
+                >
+                    <thead>
+                        <tr class="bg-green-300">
+                            <th class="border border-green-600 p-2">ID</th>
+                            <th class="border border-green-600 p-2">Email</th>
+                            <th class="border border-green-600 p-2">
+                                First Name
+                            </th>
+                            <th class="border border-green-600 p-2">
+                                Last Name
+                            </th>
+                            <th class="border border-green-600 p-2">Avatar</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+    <script>
+        let target = $("#table > tbody");
+        let url = "https://reqres.in/api/users?page=1&per_page=5";
+        fetch(url, {
+            method: "GET",
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                data = data.data;
+                data.forEach((data, index) => {
+                    target.before(`
+                    <tr>
+                        <td class="border border-green-600 p-2">
+                            ${data.id}
+                        </td>
+                        <td class="border border-green-600 p-2">
+                            ${data.email}
+                        </td>
+                        <td class="border border-green-600 p-2">
+                            ${data.first_name}
+                        </td>
+                        <td class="border border-green-600 p-2">
+                            ${data.last_name}
+                        </td>
+                        <td class="border border-green-600 p-2">
+                            <img class="w-12" src="${data.avatar}">
+                        </td>                
+                    </tr>`);
+                });
+            });
+    </script>
+</html>
